@@ -1,2 +1,2 @@
 # timesubtract-im7
- Parallelized rolling minimum time subtraction filter for a series of LaVision Davis IM7 files
+ Parallelized rolling minimum time subtraction filter for a time series of LaVision Davis IM7 files
