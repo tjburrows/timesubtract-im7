@@ -1,6 +1,6 @@
 import glob
 import os
-from myIM7class import IM7
+from im7_class import IM7
 import dask
 import dask.array as da
 from dask_image.ndfilters import minimum_filter
@@ -9,6 +9,9 @@ from dask.distributed import Client, LocalCluster
 
 # Path to IM7 files
 im7_path = './testdata'
+
+# Path for temporary files
+temp_path = './temp'
 
 # Filter length
 n = 5
@@ -32,7 +35,7 @@ def writeIM7(Idata, im7, newPath):
 if __name__ == '__main__':    
     cleanup(dir())
     
-    cluster = LocalCluster(n_workers=workers, memory_limit=worker_mem, processes=True, dashboard_address='127.0.0.1:8787', local_directory='/tmp/dask')
+    cluster = LocalCluster(n_workers=workers, memory_limit=worker_mem, processes=True, dashboard_address='127.0.0.1:8787', local_directory=temp_path)
     client = Client(cluster)
     print(client)
     
@@ -45,7 +48,7 @@ if __name__ == '__main__':
         
     filenamesOnly = list(map(os.path.basename, filenames))
     numImages = len(filenames)
-    l = (n-1)/2
+    l = (n - 1) / 2
     sample1 = IM7(filenames[0])
     sampleShape = sample1.data['I'].data.shape
     sampleDtype = sample1.data['I'].data.dtype
@@ -72,7 +75,6 @@ if __name__ == '__main__':
 
     try:
         dask.compute(*writes)
-        client.profile(filename="dask-profile.html")
         cleanup(dir())
     except:
         cleanup(dir())
