@@ -1,0 +1,4 @@
+ReadIM
+numpy
+dask
+dask-image

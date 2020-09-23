@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 import glob
 import os
 from myIM7class import IM7
@@ -10,10 +8,16 @@ import numpy as np
 from dask.distributed import Client, LocalCluster
 
 # Path to IM7 files
-im7Path = './testdata'
+im7_path = './testdata'
 
 # Filter length
 n = 5
+
+# Number of workers
+workers = 4
+
+# Memory limit per worker
+worker_mem = '2GB'
 
 def cleanup(environment):
     if 'client' in environment:
@@ -28,16 +32,16 @@ def writeIM7(Idata, im7, newPath):
 if __name__ == '__main__':    
     cleanup(dir())
     
-    cluster = LocalCluster(memory_limit='2GB', processes=True, dashboard_address='127.0.0.1:8787', local_directory='/tmp/dask')
+    cluster = LocalCluster(n_workers=workers, memory_limit=worker_mem, processes=True, dashboard_address='127.0.0.1:8787', local_directory='/tmp/dask')
     client = Client(cluster)
     print(client)
     
-    im7Path = os.path.abspath(im7Path)
-    filenames = glob.glob(os.path.join(im7Path, '*.im7'))
+    im7_path = os.path.abspath(im7_path)
+    filenames = glob.glob(os.path.join(im7_path, '*.im7'))
     filenames = list(map(os.path.abspath, filenames))
     
     if not filenames:
-        raise ValueError('No .im7 files found at %s' % im7Path)
+        raise ValueError('No .im7 files found at %s' % im7_path)
         
     filenamesOnly = list(map(os.path.basename, filenames))
     numImages = len(filenames)
@@ -56,14 +60,14 @@ if __name__ == '__main__':
     newImages = lazyStack - minimum
     
     folder = 'SubOverTimeMin_sL=%d' % n
-    folder = os.path.join(im7Path, folder)
+    folder = os.path.join(im7_path, folder)
     if not os.path.exists(folder):
         os.mkdir(folder)
     
     
     writes = []
     for i in range(0, lazyStack.shape[0]):
-        newPath = os.path.join(im7Path, folder, filenamesOnly[i])
+        newPath = os.path.join(im7_path, folder, filenamesOnly[i])
         writes.append(dask.delayed(writeIM7)(newImages[i,:], lazy_im7s[i], newPath))
 
     try:

@@ -1,17 +1,9 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Feb 10 12:12:20 2020
-
-@author: labuser
-"""
 import ReadIM
 import sys
 import os
 import numpy as np
-from numba import njit
 from re import findall
 
-@njit
 def map_D(D, a, b, dtype):
     """ Generic mapping from coordinates to pixel position
     using slope a intersect b
@@ -19,7 +11,6 @@ def map_D(D, a, b, dtype):
     """
     return np.round((D - b) / a).astype(dtype)
 
-@njit
 def map_d(d, a, b, dtype):
     """ Generic mapping from pixel position to coordinates
         using slope a intersect b
