@@ -37,4 +37,5 @@ This is the main script that performs the time subtraction.  Relevent parameters
 This script plots a before and after image for a given time subtraction.  Path and file names must be changed for this to work.  An example output plot from this script is shown above.
 
 ## Notes
-This could not have been made without Alan Fleming's Python interface for LaVision files ([ReadIM](https://bitbucket.org/fleming79/readim) and [IM](https://bitbucket.org/fleming79/im)).  The included IM7 class is a stripped down version of Alan's IM module.
+ - This could not have been made without Alan Fleming's Python interface for LaVision files ([ReadIM](https://bitbucket.org/fleming79/readim) and [IM](https://bitbucket.org/fleming79/im)).  The included IM7 class is a stripped down version of Alan's IM module.
+ - In order to load the images back into Davis, the xml file from the original IM7 directory will need to be copied into the folder containing the new IM7s.
