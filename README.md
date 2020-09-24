@@ -10,7 +10,7 @@ The [LaVision Davis](https://www.lavision.de/en/products/davis-software) softwar
  - Adjustable filter length *n*
  - Control of worker number and memory usage
  - Tested on planar and stereo images, should also work on tomographic
- - Implemented for local computing but [easily adapted](https://docs.dask.org/en/latest/setup.html) to run on a Dask-compatible cluster
+ - Implemented for [local](https://docs.dask.org/en/latest/setup/single-distributed.html#localcluster) computing but [easily adapted](https://docs.dask.org/en/latest/setup.html) to run on a Dask-compatible cluster
  
 ## Requirements
 ### time_subtract.py
