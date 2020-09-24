@@ -15,7 +15,10 @@ The [LaVision Davis](https://www.lavision.de/en/products/davis-software) softwar
 ## Requirements
 ### time_subtract.py
 Install the below requirements with `pip install requirements.txt`
-Numpy, Dask, Dask-image, ReadIM
+- Numpy
+- Dask
+- Dask-image
+- [ReadIM](https://bitbucket.org/fleming79/readim)
 
 ### plot_im7.py
 This requires matplotlib, numpy, and [IM](https://bitbucket.org/fleming79/im).  Install IM with `pip install git+https://bitbucket.org/fleming79/im`
