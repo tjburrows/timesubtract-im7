@@ -10,6 +10,7 @@ The [LaVision Davis](https://www.lavision.de/en/products/davis-software) softwar
  - Adjustable filter length *n*
  - Control of worker number and memory usage
  - Tested on planar and stereo images, should also work on tomographic
+ - Implemented for local computing but [easily adapted](https://docs.dask.org/en/latest/setup.html) to run on a Dask-compatible cluster
  
 ## Requirements
 ### time_subtract.py
@@ -30,4 +31,4 @@ This is the main script that performs the time subtraction.  Relevent parameters
  - *worker_mem*: amount of memery to use per worker
 
 ### plot_im7.py
-This script plots a before and after image for a given time subtraction.  Path and file names must be changed for this to work.  An example output plot from this script is below.
+This script plots a before and after image for a given time subtraction.  Path and file names must be changed for this to work.  An example output plot from this script is shown above.
