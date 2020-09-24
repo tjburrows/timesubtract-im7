@@ -26,7 +26,7 @@ This requires matplotlib, numpy, and [IM](https://bitbucket.org/fleming79/im).  
 
 ## Usage
 ### time_subtract.py
-This is the main script that performs the time subtraction.  Relevent parameters are commented and are below.  To run, use the command `python time_subtract.py`.  Because of the parallization, this script cannot be run in Spyder.
+This is the main script that performs the time subtraction.  Relevent parameters are commented in the script and also listed below.  To run, use the command `python time_subtract.py`.  Because of the parallization, this script cannot be run in Spyder.
  - *im7_path*: path to IM7 files
  - *temp_path*: path for temporary Dask files
  - *n*: filter length
