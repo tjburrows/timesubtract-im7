@@ -1,5 +1,7 @@
 # timesubtract-im7
-Python script which implements a parallelized rolling minimum time subtraction filter for a time series of LaVision Davis IM7 files.
+Python script which implements a parallelized rolling minimum time subtraction filter for a time series of LaVision Davis IM7 files (particle image velocimetry).
+
+![before-after plot](/before-after.png)
 
 ## Introduction
 The [LaVision Davis](https://www.lavision.de/en/products/davis-software) software has time subtraction built in, but it is limited to local processing on a Windows workstation.  This implementation performs the same operation using Python and [Dask](https://dask.org), allowing for local and cluster computing on any operating system.  This serves as an example of IM7 parallel processing that could be a starting point for creating a suite of parallelized image processing operations.
@@ -29,5 +31,3 @@ This is the main script that performs the time subtraction.  Relevent parameters
 
 ### plot_im7.py
 This script plots a before and after image for a given time subtraction.  Path and file names must be changed for this to work.  An example output plot from this script is below.
-
-![before-after plot](/before-after.png)
